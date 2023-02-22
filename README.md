@@ -91,6 +91,8 @@ Since for most products y<sub>ij(k)</sub> =0 accounts for the majority of the da
 We then added 4 independent variables to this equation to account for products across the dataset, as follows:
 
 
+<img width="760" alt="Screen Shot 2023-02-21 at 10 48 01 AM" src="https://user-images.githubusercontent.com/78453405/220548395-aee1e0ab-5e5a-4b3b-8eec-b9394273779d.png">
+
 
 Similar to the previous methods used, the dataset was preprocessed to obtain the required features in order to apply classification techniques, populated with all combinations of origin-destination-product trade combinations, assigned trade binaries and downsampled to reduce skewness in the data. The final dataset consists of ~12.5 Mn records. 
 
@@ -101,5 +103,21 @@ The total export and import values and the distance between countries were conve
 - Random Forest Classifier
 
 
+### 4. Graph Embeddings
+
+
+As a final step, we applied an algorithm called Node2vec, which seeks to preserve local neighborhoods of nodes and can efficiently optimize using stochastic gradient descent akin to back propagation on just a single hidden-layer feedforward neural network.
+
+
+The overall idea of the Node2vec node embedding is to translate the graph structure to a high spatial vector space, which retains the nodes and edges properties. As an objective we aim to preserve relationships and “closeness between nodes”. If two networks were close in the graph structure we would like to have them close in the vector space representation.
+
+
+The Node2vec algorithm allowed us to capture the network structure of each product space. Using the 4 digit product classification, we have approximately 1300 products. A graph embedding for each product was created and in each case we randomly removed 15% of existing links from the current network. To ensure that this removal did not alter the network structure, a check was made for isolated nodes. This new graph structure was used to predict the existing nodes for 2014 network structure along with some random edges that did not previously exist. 
+
+
+Further, a tuned Random Forest classifier and XgBoost classifier was used to predict the links. The current data configuration was used as training and validation set, while the new existing links and non existing links by product for 2019 were used as the test set. This approach allowed us to have a measure of evaluating how accurately new trading possibilities can be predicted.
+
+
+### Results from Step 2, 3 and 4
 
 
