@@ -73,12 +73,12 @@ Drawing from the previous step, our methodology was to first develop a baseline 
 Based on this equation, the raw dataset was pre-processed to obtain the required features in order to apply classification techniques. It was merge with the GeoDist dataset and all trade combinations for coffee were isolated. This dataset was further populated with missing origin and destination countries, resulting in all combinations of exporting country *i* and importing country *j*. The countries that traded for coffee in 2019 were assigned a binary label 1 while the others were assigned label 0. 
 
 
-As a result, the RHS of the equation was used for the trade flow classification,
+The RHS of the modified equation was used for the trade flow classification,
 yij(k)=0+1ln(Mi(k))+2ln(Mj(k))-3ln(Dij) 
 , where yij(k) is a binary variable derived from Fij(k): yij(k)=1 when Fij(k)>0 and yij(k)=0 otherwise. 
 
 
-Since for most products y<sub>ij(k) =0 accounts for the majority of the data, this binary variable is skewed. Therefore, these were randomly downsized to make the ratio of *binary 1*:*binary 0* as *1*:*2*. 
+Since for most products y<sub>ij(k)</sub> =0 accounts for the majority of the data, this binary variable is skewed. Therefore, these were randomly downsized to make the ratio of *binary 1*:*binary 0* as *1*:*2*. 
 
 
 The features were converted to logarithmic values and the dataset was further split into training and test dataset. The training dataset was used to train the Logistic Regression classifier for prediction of trade binary labels. 
