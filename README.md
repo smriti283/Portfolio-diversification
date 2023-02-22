@@ -78,7 +78,7 @@ yij(k)=0+1ln(Mi(k))+2ln(Mj(k))-3ln(Dij)
 , where yij(k) is a binary variable derived from Fij(k): yij(k)=1 when Fij(k)>0 and yij(k)=0 otherwise. 
 
 
-Since for most products y~ij(k)~ =0 accounts for the majority of the data, this binary variable is skewed. Therefore, these were randomly downsized to make the ratio of *binary 1*:*binary 0* as *1*:*2*. 
+Since for most products y<sub>ij(k)<sub> =0 accounts for the majority of the data, this binary variable is skewed. Therefore, these were randomly downsized to make the ratio of *binary 1*:*binary 0* as *1*:*2*. 
 
 
 The features were converted to logarithmic values and the dataset was further split into training and test dataset. The training dataset was used to train the Logistic Regression classifier for prediction of trade binary labels. 
