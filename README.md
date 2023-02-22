@@ -56,4 +56,11 @@ Here is the result from "Coffee" data. The degree centrality calculated indicate
 Additionally, we found the top 10 countries that started new trades with the highest degree centrality, and this map shows America’s new network which has the highest value and its most exporting products.
 
 
+<img width="839" alt="Screen Shot 2023-02-20 at 10 31 02 PM" src="https://user-images.githubusercontent.com/78453405/220495611-e35c2d2a-d048-49c2-b06c-a6140c2b3243.png">
+
+
+### 2. Gravity Model and prediction by Classification
+
+We modified the gravity model of international trade and transformed it by taking its logarithmic values for the purpose of classification, as below:
+
 
