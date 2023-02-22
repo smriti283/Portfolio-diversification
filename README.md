@@ -61,6 +61,24 @@ Additionally, we found the top 10 countries that started new trades with the hig
 
 ### 2. Gravity Model and prediction by Classification
 
-We modified the gravity model of international trade and transformed it by taking its logarithmic values for the purpose of classification, as below:
+Next, to develop a baseline model for predicting the trade flow between two countries, our methodology draws upon the gravity model of international trade. 
 
 
+Drawing from the previous step, our methodology was to first develop a baseline for a single product (i.e coffee), before proceeding to a model with all products. As we focussed on product based trade flow in 2019 based on trends in 2014, the features in the gravity model equation were customized and transformed by taking logs on each side, as represented below. 
+
+
+<img width="713" alt="Screen Shot 2023-02-21 at 12 33 07 AM" src="https://user-images.githubusercontent.com/78453405/220496005-68f615fa-30f0-4442-bf7f-72cea7f3b29a.png">
+
+
+Based on this equation, the raw dataset was pre-processed to obtain the required features in order to apply classification techniques. It was merge with the GeoDist dataset and all trade combinations for coffee were isolated. This dataset was further populated with missing origin and destination countries, resulting in all combinations of exporting country *i* and importing country *j*. The countries that traded for coffee in 2019 were assigned a binary label 1 while the others were assigned label 0. 
+
+
+As a result, the RHS of the equation was used for the trade flow classification,
+yij(k)=0+1ln(Mi(k))+2ln(Mj(k))-3ln(Dij) 
+, where yij(k) is a binary variable derived from Fij(k): yij(k)=1 when Fij(k)>0 and yij(k)=0 otherwise. 
+
+
+Since for most products y~ij(k)~ =0 accounts for the majority of the data, this binary variable is skewed. Therefore, these were randomly downsized to make the ratio of *binary 1*:*binary 0* as *1*:*2*. 
+
+
+The features were converted to logarithmic values and the dataset was further split into training and test dataset. The training dataset was used to train the Logistic Regression classifier for prediction of trade binary labels. 
