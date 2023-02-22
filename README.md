@@ -50,3 +50,16 @@ Based on the above, network analysis was performed on two different datasets to 
 - Trade flow data in 2014 and 2019 on coffee only;
 - Trade flow data in 2014 and 2019 on all products
 
+
+The trade flow network on both the above datasets were geo-visualized and the top 10 links were found.
+
+
+Here is the result from "Coffee" data. The degree centrality calculated indicates that Canada and Vietnam have the highest density of connections, indicating that these are new emerging coffee exporting countries in 2019.
+
+
+<img width="772" alt="Screen Shot 2023-02-20 at 10 30 31 PM" src="https://user-images.githubusercontent.com/78453405/220495084-2e31f255-e1bd-4aca-a40b-bdc58c8cfcbf.png">
+
+
+Additionally, we found the top 10 countries that started new trades with the highest degree centrality, and this map shows America’s new network which has the highest value and its most exporting products.
+
+
