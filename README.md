@@ -150,7 +150,7 @@ The baseline gravity model for coffee (Model 1) recorded quite a good accuracy a
 ## Conclusion
 
 
-he recommendation model was able to accurately provide recommendation in order to diversify countries’ product portfolio. However, we found that while traditional models performed well on predicting future trade links, the complexities of the underlying dynamics of networks call for more advanced models that capture the network graph structures in their entirety.
+The recommendation model was able to accurately provide recommendation in order to diversify countries’ product portfolio. However, we found that while traditional models performed well on predicting future trade links, the complexities of the underlying dynamics of networks call for more advanced models that capture the network graph structures in their entirety.
 
 
 
