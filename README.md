@@ -74,8 +74,12 @@ Based on this equation, the raw dataset was pre-processed to obtain the required
 
 
 The RHS of the modified equation was used for the trade flow classification,
-yij(k)=0+1ln(Mi(k))+2ln(Mj(k))-3ln(Dij) 
-, where yij(k) is a binary variable derived from Fij(k): yij(k)=1 when Fij(k)>0 and yij(k)=0 otherwise. 
+
+
+<img width="685" alt="Screen Shot 2023-02-21 at 12 42 28 AM" src="https://user-images.githubusercontent.com/78453405/220546014-bcface1a-1351-4ab8-8077-59bdc0fed86a.png">
+
+
+, where y<sub>ij(k)</sub> is a binary variable derived from F<sub>ij(k)</sub>: y<sub>ij(k)</sub>=1 when F<sub>ij(k)</sub>>0 and y<sub>ij(k)</sub>=0 otherwise. 
 
 
 Since for most products y<sub>ij(k)</sub> =0 accounts for the majority of the data, this binary variable is skewed. Therefore, these were randomly downsized to make the ratio of *binary 1*:*binary 0* as *1*:*2*. 
