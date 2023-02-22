@@ -50,16 +50,23 @@ The trade flow network on both the above datasets were geo-visualized and the to
 Here is the result from "Coffee" data. The degree centrality calculated indicates that Canada and Vietnam have the highest density of connections, indicating that these are new emerging coffee exporting countries in 2019.
 
 
+
 <img width="772" alt="Screen Shot 2023-02-20 at 10 30 31 PM" src="https://user-images.githubusercontent.com/78453405/220495084-2e31f255-e1bd-4aca-a40b-bdc58c8cfcbf.png">
+
 
 
 Additionally, we found the top 10 countries that started new trades with the highest degree centrality, and this map shows America’s new network which has the highest value and its most exporting products.
 
 
+
 <img width="839" alt="Screen Shot 2023-02-20 at 10 31 02 PM" src="https://user-images.githubusercontent.com/78453405/220495611-e35c2d2a-d048-49c2-b06c-a6140c2b3243.png">
 
 
+
+
 ### 2. Gravity Model and prediction by Classification
+
+
 
 Next, to develop a baseline model for predicting the trade flow between two countries, our methodology draws upon the gravity model of international trade. 
 
@@ -67,7 +74,9 @@ Next, to develop a baseline model for predicting the trade flow between two coun
 We first develop a baseline for a single product (i.e coffee), before proceeding to a model with all products. As we focussed on product based trade flow in 2019 based on trends in 2014, the features in the gravity model equation were customized and transformed by taking logs on each side, as represented below. 
 
 
+
 <img width="713" alt="Screen Shot 2023-02-21 at 12 33 07 AM" src="https://user-images.githubusercontent.com/78453405/220496005-68f615fa-30f0-4442-bf7f-72cea7f3b29a.png">
+
 
 
 Based on this equation, the raw dataset was pre-processed to obtain the required features in order to apply classification techniques. It was merged with the GeoDist dataset and all trade combinations for coffee were isolated. This dataset was further populated with missing origin and destination countries, resulting in all combinations of exporting country *i* and importing country *j*. The countries that traded for coffee in 2019 were assigned a binary label 1 while the others were assigned label 0. 
@@ -76,7 +85,9 @@ Based on this equation, the raw dataset was pre-processed to obtain the required
 The RHS of the modified equation was used for the trade flow classification,
 
 
+
 <img width="685" alt="Screen Shot 2023-02-21 at 12 42 28 AM" src="https://user-images.githubusercontent.com/78453405/220546014-bcface1a-1351-4ab8-8077-59bdc0fed86a.png">
+
 
 
 , where y<sub>ij(k)</sub> is a binary variable derived from F<sub>ij(k)</sub>: y<sub>ij(k)</sub>=1 when F<sub>ij(k)</sub>>0 and y<sub>ij(k)</sub>=0 otherwise. 
@@ -85,13 +96,16 @@ The RHS of the modified equation was used for the trade flow classification,
 Since for most products y<sub>ij(k)</sub> =0 accounts for the majority of the data, this binary variable is skewed. Therefore, these were randomly downsized to make the ratio of *binary 1*:*binary 0* as *1*:*2*. The features were converted to logarithmic values and the dataset was further split into training and test dataset. The training dataset was used to train the Logistic Regression classifier for prediction of trade binary labels. 
 
 
+
 ### 3. Augmented Gravity Model and prediction by Classification
 
 
 We then added 4 independent variables to this equation to account for products across the dataset, as follows:
 
 
+
 <img width="760" alt="Screen Shot 2023-02-21 at 10 48 01 AM" src="https://user-images.githubusercontent.com/78453405/220548395-aee1e0ab-5e5a-4b3b-8eec-b9394273779d.png">
+
 
 
 Similar to the previous methods used, the dataset was preprocessed to obtain the required features in order to apply classification techniques, populated with all combinations of origin-destination-product trade combinations, assigned trade binaries and downsampled to reduce skewness in the data. The final dataset consists of ~12.5 Mn records. 
@@ -103,7 +117,9 @@ The total export and import values and the distance between countries were conve
 - Random Forest Classifier
 
 
+
 ### 4. Graph Embeddings
+
 
 
 As a final step, we applied an algorithm called Node2vec, which seeks to preserve local neighborhoods of nodes and can efficiently optimize using stochastic gradient descent akin to back propagation on just a single hidden-layer feedforward neural network.
@@ -118,6 +134,29 @@ The Node2vec algorithm allowed us to capture the network structure of each produ
 Further, a tuned Random Forest classifier and XgBoost classifier was used to predict the links. The current data configuration was used as training and validation set, while the new existing links and non existing links by product for 2019 were used as the test set. This approach allowed us to have a measure of evaluating how accurately new trading possibilities can be predicted.
 
 
+
 ### Results from Step 2, 3 and 4
 
+
+
+<img width="777" alt="Screen Shot 2023-02-21 at 11 17 02 AM" src="https://user-images.githubusercontent.com/78453405/220552575-13dc56bf-c326-4b32-a31f-de54de405ce6.png">
+
+
+
+The baseline gravity model for coffee (Model 1) recorded quite a good accuracy and F1 score. This result indicates that there is a strong linear relationship between the existence of the trade flow and the logarithm of total import value/total export value/distance. As hypothesized, incorporating the network structure (Model 2) positively impacted both accuracy and F1 score. Referring to the results using all products, additional 4 independent variables contributed to improving the gravity model's classification performance (Model 3, 4), which recorded higher accuracy than the baseline (refer confusion matrix in Figure 8 and 10).
+
+
+
+## Conclusion
+
+
+he recommendation model was able to accurately provide recommendation in order to diversify countries’ product portfolio. However, we found that while traditional models performed well on predicting future trade links, the complexities of the underlying dynamics of networks call for more advanced models that capture the network graph structures in their entirety.
+
+
+
+Moreover, models incorporating economic complexity or network structure outperformed the conventional gravity model in terms of accuracy and F1 score.
+
+
+
+One of the limitations in our approach was the lack of consideration of political relationships and ties between countries. We hypothesize that another graph could represent such a relationship, and deep learning approaches such as Graph Neural Networks could output more reliable recommendations with it.
 
