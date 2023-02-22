@@ -64,13 +64,13 @@ Additionally, we found the top 10 countries that started new trades with the hig
 Next, to develop a baseline model for predicting the trade flow between two countries, our methodology draws upon the gravity model of international trade. 
 
 
-Drawing from the previous step, our methodology was to first develop a baseline for a single product (i.e coffee), before proceeding to a model with all products. As we focussed on product based trade flow in 2019 based on trends in 2014, the features in the gravity model equation were customized and transformed by taking logs on each side, as represented below. 
+We first develop a baseline for a single product (i.e coffee), before proceeding to a model with all products. As we focussed on product based trade flow in 2019 based on trends in 2014, the features in the gravity model equation were customized and transformed by taking logs on each side, as represented below. 
 
 
 <img width="713" alt="Screen Shot 2023-02-21 at 12 33 07 AM" src="https://user-images.githubusercontent.com/78453405/220496005-68f615fa-30f0-4442-bf7f-72cea7f3b29a.png">
 
 
-Based on this equation, the raw dataset was pre-processed to obtain the required features in order to apply classification techniques. It was merge with the GeoDist dataset and all trade combinations for coffee were isolated. This dataset was further populated with missing origin and destination countries, resulting in all combinations of exporting country *i* and importing country *j*. The countries that traded for coffee in 2019 were assigned a binary label 1 while the others were assigned label 0. 
+Based on this equation, the raw dataset was pre-processed to obtain the required features in order to apply classification techniques. It was merged with the GeoDist dataset and all trade combinations for coffee were isolated. This dataset was further populated with missing origin and destination countries, resulting in all combinations of exporting country *i* and importing country *j*. The countries that traded for coffee in 2019 were assigned a binary label 1 while the others were assigned label 0. 
 
 
 The RHS of the modified equation was used for the trade flow classification,
@@ -82,7 +82,24 @@ The RHS of the modified equation was used for the trade flow classification,
 , where y<sub>ij(k)</sub> is a binary variable derived from F<sub>ij(k)</sub>: y<sub>ij(k)</sub>=1 when F<sub>ij(k)</sub>>0 and y<sub>ij(k)</sub>=0 otherwise. 
 
 
-Since for most products y<sub>ij(k)</sub> =0 accounts for the majority of the data, this binary variable is skewed. Therefore, these were randomly downsized to make the ratio of *binary 1*:*binary 0* as *1*:*2*. 
+Since for most products y<sub>ij(k)</sub> =0 accounts for the majority of the data, this binary variable is skewed. Therefore, these were randomly downsized to make the ratio of *binary 1*:*binary 0* as *1*:*2*. The features were converted to logarithmic values and the dataset was further split into training and test dataset. The training dataset was used to train the Logistic Regression classifier for prediction of trade binary labels. 
 
 
-The features were converted to logarithmic values and the dataset was further split into training and test dataset. The training dataset was used to train the Logistic Regression classifier for prediction of trade binary labels. 
+### 3. Augmented Gravity Model and prediction by Classification
+
+
+We then added 4 independent variables to this equation to account for products across the dataset, as follows:
+
+
+
+Similar to the previous methods used, the dataset was preprocessed to obtain the required features in order to apply classification techniques, populated with all combinations of origin-destination-product trade combinations, assigned trade binaries and downsampled to reduce skewness in the data. The final dataset consists of ~12.5 Mn records. 
+
+
+The total export and import values and the distance between countries were converted to logarithmic scale and the dataset was split into training and test data. Finally, the following models were trained with the training dataset for label prediction: 
+
+- Logistic Regression Classifier
+- Random Forest Classifier
+
+
+
+
