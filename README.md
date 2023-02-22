@@ -15,8 +15,8 @@ We achieved this by first exploring the formation or lack of new trade links in 
 - GeoDist: Distance data between countries
 - ArcGIS Datasets and Location data: Geospatial data for visualizations
 
-1. [World map shapefiles](https://hub.arcgis.com/datasets/2b93b06dc0dc4e809d3c8db5cb96ba69_0/explore)
-2. [World cities database](https://simplemaps.com/data/world-cities)
+          1. [World map shapefiles](https://hub.arcgis.com/datasets/2b93b06dc0dc4e809d3c8db5cb96ba69_0/explore)
+          2. [World cities database](https://simplemaps.com/data/world-cities)
           
 
 ## Methods
@@ -28,4 +28,25 @@ We achieved this by first exploring the formation or lack of new trade links in 
 
 
 ## Results
+
+### 1. Network visualization and basic exploratory analysis
+
+Our raw dataset consists of trade flow details between 235 countries for 1218 numbers of products, translating to 5,467,612 trade records in 2014 and 5,404,920 trade records in 2019 between all countries and all products.
+
+
+Therefore, to reduce the network complexity and to help draw initial insights, we decided to analyze a single product before progressing to the complete dataset with all products. After some deliberation, we chose the product **Coffee**, because of its perceived low dependability on other products which, we believed, would help us study the existing network of product trade in isolation.
+
+
+We started with a basic network analysis on the given dataset, in order to quantify the node importance in the network and to understand network metrics such as degree, closeness centrality, betweenness centrality and pagerank centrality.
+
+
+First, by comparing location_id & partner_id data between 2014 and 2019, new trade links were found.
+Secondly, we created network data with exporting countries and importing countries as nodes and exported value as weight then calculated centrality. 
+Lastly, we merged with world cities location data to map new trade links for all products in the USA and newly found links of coffee product.
+
+
+Based on the above, network analysis was performed on two different datasets to draw insights on formation of new trade links between countries in 2019 as opposed to 2014:
+
+- Trade flow data in 2014 and 2019 on coffee only;
+- Trade flow data in 2014 and 2019 on all products
 
