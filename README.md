@@ -14,8 +14,9 @@ We achieved this by first exploring the formation or lack of new trade links in 
 - [International Trade Data](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/H8SFD2): ATLAS of Economic Complexity Dataverse (Harvard University)
 - GeoDist: Distance data between countries
 - ArcGIS Datasets and Location data: Geospatial data for visualizations
-          [World map shapefiles](https://hub.arcgis.com/datasets/2b93b06dc0dc4e809d3c8db5cb96ba69_0/explore)
-          [World cities database](https://simplemaps.com/data/world-cities)
+
+1. [World map shapefiles](https://hub.arcgis.com/datasets/2b93b06dc0dc4e809d3c8db5cb96ba69_0/explore)
+2. [World cities database](https://simplemaps.com/data/world-cities)
           
 
 ## Methods
